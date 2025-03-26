@@ -3,59 +3,13 @@ from django.db.models import Count
 from .models import Asset, WaitingList, AssetCategory, Allocated
 from django.shortcuts import render, redirect
 from django.db.models import Count
-from .models import Asset, WaitingList, Allocated, Employee, AssetCategory
 from django.utils import timezone
-from datetime import timedelta
+from datetime import timedelta, date
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
-def user_dashboard(request):
-    # List of available assets (not allocated)
-    allocated_assets = Allocated.objects.values_list('asst_id', flat=True)
-    available_assets = Asset.objects.exclude(asst_id__in=allocated_assets)
 
-    # Get all asset categories for waiting list option
-    asset_categories = AssetCategory.objects.all()
-
-    if request.method == 'POST':
-        employee_id = request.POST.get('employee_id')
-        category_id = request.POST.get('category_id')
-
-        if not employee_id or not category_id:
-            return redirect('user_dashboard')
-
-        employee = Employee.objects.get(e_id=employee_id)
-        category = AssetCategory.objects.get(category_id=category_id)
-
-        # Find an available asset of the requested category
-        available_asset = Asset.objects.filter(category=category).exclude(asst_id__in=allocated_assets).first()
-
-        if available_asset:
-            # Allocate the asset
-            allocated = Allocated(
-                e_id=employee,
-                asst_id=available_asset,
-                start_date=timezone.now(),
-                end_date=timezone.now() + timedelta(days=30)  # Default 30-day allocation
-            )
-            allocated.save()
-        else:
-            # Add to waiting list if no asset is available
-            waiting = WaitingList(
-                e_id=employee,
-                category_id=category,
-                duration=30,  # Default duration
-                priority=5  # Default priority (could be user-defined)
-            )
-            waiting.save()
-
-        return redirect('user_dashboard')
-
-    context = {
-        'available_assets': available_assets,
-        'asset_categories': asset_categories,
-        'employees': Employee.objects.all(),
-    }
-    return render(request, 'user_dashboard.html', context)
-
+from .models import Asset, Allocated, WaitingList, AssetCategory, Employee
 def admin_dashboard(request):
     # Get available assets (not allocated)
     allocated_assets = Allocated.objects.values_list('asst_id', flat=True)
@@ -82,3 +36,60 @@ def admin_dashboard(request):
     }
 
     return render(request, 'admin_dashboard.html', context)
+
+
+# User Login View
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('user_dashboard')
+        else:
+            return render(request, 'login.html', {'error': 'Invalid credentials'})
+    return render(request, 'login.html')
+
+# User Logout
+def user_logout(request):
+    logout(request)
+    return redirect('user_login')
+
+# User Dashboard - Select Available Assets
+@login_required
+def user_dashboard(request):
+    employee = Employee.objects.get(user=request.user)
+
+    # Get assets that are not allocated
+    allocated_assets = Allocated.objects.values_list('asst_id', flat=True)
+    available_assets = Asset.objects.exclude(asst_id__in=allocated_assets)
+
+    if request.method == "POST":
+        category_id = request.POST.get('category_id')
+
+        # Find the first available asset of that category
+        asset = available_assets.filter(category_id=category_id).first()
+
+        if asset:
+            # Allocate the asset
+            Allocated.objects.create(
+                e_id=employee,
+                asst_id=asset,
+                start_date=date.today(),
+                end_date=date.today() + timedelta(days=30)  # Assume 30-day allocation
+            )
+            message = f"Asset {asset.asst_id} allocated successfully!"
+        else:
+            # Add to waiting list
+            WaitingList.objects.create(
+                e_id=employee,
+                category_id=AssetCategory.objects.get(pk=category_id),
+                duration=30,
+                priority=5  # Default priority
+            )
+            message = "No available asset, added to waiting list."
+
+        return render(request, 'user_dashboard.html', {'available_assets': available_assets, 'message': message})
+
+    return render(request, 'user_dashboard.html', {'available_assets': available_assets})
