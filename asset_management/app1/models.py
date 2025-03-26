@@ -41,6 +41,7 @@ class Allocated(models.Model):
 class WaitingList(models.Model):
     e_id = models.ForeignKey(Employee, on_delete=models.CASCADE)
     category_id = models.ForeignKey(AssetCategory, on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
     duration = models.IntegerField(help_text="Duration in days")
     priority = models.IntegerField(help_text="Higher number means higher priority")
 

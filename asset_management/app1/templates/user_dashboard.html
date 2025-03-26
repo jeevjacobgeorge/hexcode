@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Asset Request</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+        h2 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        form { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>User Dashboard - Request an Asset</h1>
+
+    <!-- Request Asset Form -->
+    <h2>Request an Asset</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="employee_id">Select Employee:</label>
+        <select name="employee_id" required>
+            {% for employee in employees %}
+                <option value="{{ employee.e_id }}">{{ employee.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="category_id">Select Asset Category:</label>
+        <select name="category_id" required>
+            {% for category in asset_categories %}
+                <option value="{{ category.category_id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Request Asset</button>
+    </form>
+
+    <!-- Available Assets -->
+    <h2>Available Assets</h2>
+    <table>
+        <tr>
+            <th>Asset ID</th>
+            <th>Category</th>
+            <th>Age</th>
+        </tr>
+        {% for asset in available_assets %}
+        <tr>
+            <td>{{ asset.asst_id }}</td>
+            <td>{{ asset.category.name }}</td>
+            <td>{{ asset.age }} years</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
