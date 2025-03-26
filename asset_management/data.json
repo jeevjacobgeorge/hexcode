@@ -1,0 +1,503 @@
+[
+      {
+          "model": "app1.employee",
+          "pk": 1,
+          "fields": {
+              "name": "Alice Johnson",
+              "designation": "Software Engineer"
+          }
+      },
+      {
+          "model": "app1.employee",
+          "pk": 2,
+          "fields": {
+              "name": "Bob Smith",
+              "designation": "Project Manager"
+          }
+      },
+      {
+          "model": "app1.employee",
+          "pk": 3,
+          "fields": {
+              "name": "Carol White",
+              "designation": "Business Analyst"
+          }
+      },
+      {
+          "model": "app1.employee",
+          "pk": 4,
+          "fields": {
+              "name": "David Brown",
+              "designation": "DevOps Engineer"
+          }
+      },
+      {
+          "model": "app1.employee",
+          "pk": 5,
+          "fields": {
+              "name": "Emily Davis",
+              "designation": "UX Designer"
+          }
+      },
+      {
+          "model": "app1.employee",
+          "pk": 6,
+          "fields": {
+              "name": "Frank Wilson",
+              "designation": "Technical Lead"
+          }
+      },
+      {
+          "model": "app1.employee",
+          "pk": 7,
+          "fields": {
+              "name": "Grace Lee",
+              "designation": "HR Manager"
+          }
+      },
+      {
+          "model": "app1.employee",
+          "pk": 8,
+          "fields": {
+              "name": "Henry Adams",
+              "designation": "Marketing Manager"
+          }
+      },
+      {
+          "model": "app1.employee",
+          "pk": 9,
+          "fields": {
+              "name": "Irene Taylor",
+              "designation": "Finance Manager"
+          }
+      },
+      {
+          "model": "app1.employee",
+          "pk": 10,
+          "fields": {
+              "name": "John Miller",
+              "designation": "Support Engineer"
+          }
+      },
+      {
+          "model": "app1.assetcategory",
+          "pk": 1,
+          "fields": {
+              "name": "Laptops",
+              "specs": "High performance laptops with i7 and 16GB RAM."
+          }
+      },
+      {
+          "model": "app1.assetcategory",
+          "pk": 2,
+          "fields": {
+              "name": "Desktops",
+              "specs": "All-in-one systems and high-end towers."
+          }
+      },
+      {
+          "model": "app1.assetcategory",
+          "pk": 3,
+          "fields": {
+              "name": "Mobile Phones",
+              "specs": "Latest smartphones with 5G support."
+          }
+      },
+      {
+          "model": "app1.assetcategory",
+          "pk": 4,
+          "fields": {
+              "name": "Printers",
+              "specs": "Laser and inkjet printers with wireless connectivity."
+          }
+      },
+      {
+          "model": "app1.assetcategory",
+          "pk": 5,
+          "fields": {
+              "name": "Tablets",
+              "specs": "Portable tablets with high resolution screens."
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 1,
+          "fields": {
+              "category": 1,
+              "age": 2,
+              "damaged": false,
+              "maintenance_required": false
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 2,
+          "fields": {
+              "category": 1,
+              "age": 3,
+              "damaged": false,
+              "maintenance_required": true
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 3,
+          "fields": {
+              "category": 2,
+              "age": 5,
+              "damaged": true,
+              "maintenance_required": true
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 4,
+          "fields": {
+              "category": 2,
+              "age": 1,
+              "damaged": false,
+              "maintenance_required": false
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 5,
+          "fields": {
+              "category": 3,
+              "age": 1,
+              "damaged": false,
+              "maintenance_required": false
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 6,
+          "fields": {
+              "category": 3,
+              "age": 2,
+              "damaged": false,
+              "maintenance_required": true
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 7,
+          "fields": {
+              "category": 3,
+              "age": 4,
+              "damaged": true,
+              "maintenance_required": false
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 8,
+          "fields": {
+              "category": 4,
+              "age": 3,
+              "damaged": false,
+              "maintenance_required": true
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 9,
+          "fields": {
+              "category": 4,
+              "age": 2,
+              "damaged": true,
+              "maintenance_required": true
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 10,
+          "fields": {
+              "category": 5,
+              "age": 1,
+              "damaged": false,
+              "maintenance_required": false
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 11,
+          "fields": {
+              "category": 5,
+              "age": 2,
+              "damaged": false,
+              "maintenance_required": false
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 12,
+          "fields": {
+              "category": 1,
+              "age": 4,
+              "damaged": false,
+              "maintenance_required": true
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 13,
+          "fields": {
+              "category": 2,
+              "age": 3,
+              "damaged": true,
+              "maintenance_required": false
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 14,
+          "fields": {
+              "category": 3,
+              "age": 2,
+              "damaged": false,
+              "maintenance_required": false
+          }
+      },
+      {
+          "model": "app1.asset",
+          "pk": 15,
+          "fields": {
+              "category": 4,
+              "age": 5,
+              "damaged": false,
+              "maintenance_required": true
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 1,
+          "fields": {
+              "e_id": 1,
+              "asst_id": 1,
+              "start_date": "2025-01-10",
+              "end_date": "2025-06-10",
+              "delivered": true,
+              "feedback": "Great performance",
+              "valid": true
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 2,
+          "fields": {
+              "e_id": 2,
+              "asst_id": 2,
+              "start_date": "2025-02-15",
+              "end_date": null,
+              "delivered": true,
+              "feedback": "Working well",
+              "valid": true
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 3,
+          "fields": {
+              "e_id": 3,
+              "asst_id": 3,
+              "start_date": "2025-03-01",
+              "end_date": "2025-04-01",
+              "delivered": false,
+              "feedback": "Minor issues observed",
+              "valid": false
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 4,
+          "fields": {
+              "e_id": 4,
+              "asst_id": 4,
+              "start_date": "2025-01-20",
+              "end_date": "2025-07-20",
+              "delivered": true,
+              "feedback": "Efficient usage",
+              "valid": true
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 5,
+          "fields": {
+              "e_id": 5,
+              "asst_id": 5,
+              "start_date": "2025-04-05",
+              "end_date": null,
+              "delivered": true,
+              "feedback": "Excellent device",
+              "valid": true
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 6,
+          "fields": {
+              "e_id": 6,
+              "asst_id": 6,
+              "start_date": "2025-02-25",
+              "end_date": "2025-05-25",
+              "delivered": true,
+              "feedback": "Needs periodic updates",
+              "valid": true
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 7,
+          "fields": {
+              "e_id": 7,
+              "asst_id": 7,
+              "start_date": "2025-03-15",
+              "end_date": null,
+              "delivered": false,
+              "feedback": "Damaged on arrival",
+              "valid": false
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 8,
+          "fields": {
+              "e_id": 8,
+              "asst_id": 8,
+              "start_date": "2025-01-30",
+              "end_date": "2025-03-30",
+              "delivered": true,
+              "feedback": "Smooth operation",
+              "valid": true
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 9,
+          "fields": {
+              "e_id": 9,
+              "asst_id": 9,
+              "start_date": "2025-02-10",
+              "end_date": null,
+              "delivered": true,
+              "feedback": "Maintenance required soon",
+              "valid": true
+          }
+      },
+      {
+          "model": "app1.allocated",
+          "pk": 10,
+          "fields": {
+              "e_id": 10,
+              "asst_id": 10,
+              "start_date": "2025-04-10",
+              "end_date": "2025-08-10",
+              "delivered": true,
+              "feedback": "Works fine",
+              "valid": true
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 1,
+          "fields": {
+              "e_id": 1,
+              "category_id": 2,
+              "duration": 30,
+              "priority": 5
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 2,
+          "fields": {
+              "e_id": 2,
+              "category_id": 3,
+              "duration": 15,
+              "priority": 4
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 3,
+          "fields": {
+              "e_id": 3,
+              "category_id": 1,
+              "duration": 60,
+              "priority": 3
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 4,
+          "fields": {
+              "e_id": 4,
+              "category_id": 5,
+              "duration": 45,
+              "priority": 6
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 5,
+          "fields": {
+              "e_id": 5,
+              "category_id": 4,
+              "duration": 20,
+              "priority": 7
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 6,
+          "fields": {
+              "e_id": 6,
+              "category_id": 2,
+              "duration": 25,
+              "priority": 2
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 7,
+          "fields": {
+              "e_id": 7,
+              "category_id": 3,
+              "duration": 50,
+              "priority": 8
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 8,
+          "fields": {
+              "e_id": 8,
+              "category_id": 1,
+              "duration": 35,
+              "priority": 1
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 9,
+          "fields": {
+              "e_id": 9,
+              "category_id": 5,
+              "duration": 40,
+              "priority": 4
+          }
+      },
+      {
+          "model": "app1.waitinglist",
+          "pk": 10,
+          "fields": {
+              "e_id": 10,
+              "category_id": 4,
+              "duration": 30,
+              "priority": 5
+          }
+      }
+  ]
+  
