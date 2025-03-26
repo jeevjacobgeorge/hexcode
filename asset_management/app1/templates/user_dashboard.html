@@ -1,44 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-    <h1>Welcome to Asset Management</h1>
-    <a href="{% url 'user_logout' %}">Logout</a>
+{% block title %}Dashboard - Asset Management{% endblock %}
 
-    <h2>Select an Asset</h2>
-    {% if message %}
-        <p style="color: green;">{{ message }}</p>
-    {% endif %}
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+    <h1>Asset Management Dashboard</h1>
+    <a href="{% url 'user_logout' %}" class="btn" style="background-color: #ef4444;">Logout</a>
+</div>
 
-    <form method="POST">
+{% if message %}
+    <div class="alert alert-success">
+        {{ message }}
+    </div>
+{% endif %}
+
+<div class="card">
+    <h2 style="margin-bottom: 1rem;">Request an Asset</h2>
+    <form method="POST" style="display: flex; gap: 1rem; align-items: flex-end;">
         {% csrf_token %}
-        <label>Select Asset Category:</label>
-        <select name="category_id">
-            {% for asset in available_assets %}
-                <option value="{{ asset.category.category_id }}">{{ asset.category.name }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Request Asset</button>
+        <div class="form-group" style="flex: 1;">
+            <label for="category_id">Select Asset Category</label>
+            <select id="category_id" name="category_id" class="form-control" required>
+                <option value="">Choose a category...</option>
+                {% for asset in available_assets %}
+                    <option value="{{ asset.category.category_id }}">{{ asset.category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn">Request Asset</button>
     </form>
+</div>
 
-    <h2>Available Assets</h2>
-    <table>
-        <tr>
-            <th>Asset ID</th>
-            <th>Category</th>
-        </tr>
-        {% for asset in available_assets %}
-        <tr>
-            <td>{{ asset.asst_id }}</td>
-            <td>{{ asset.category.name }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-
-</body>
-</html>
+<div class="card">
+    <h2 style="margin-bottom: 1rem;">Available Assets</h2>
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Asset ID</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for asset in available_assets %}
+                <tr>
+                    <td>{{ asset.asst_id }}</td>
+                    <td>{{ asset.category.name }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
